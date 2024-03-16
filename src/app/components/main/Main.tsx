@@ -1,9 +1,14 @@
-import Calendar from './calender/Calendar';
+"use client"
+
+import { RecoilRoot } from 'recoil';
+import Calendar from './calendar/Calendar';
 
 const Main = () => {
   return (
     <>
+    <RecoilRoot>
       <Calendar />
+    </RecoilRoot>
     </>
   );
 };
