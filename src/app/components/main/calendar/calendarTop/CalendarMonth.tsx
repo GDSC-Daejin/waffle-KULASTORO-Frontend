@@ -1,6 +1,6 @@
-import { useRecoilState } from "recoil"
-import { monthAtom, yearAtom } from "../atom";
-import { useEffect, useState } from "react";
+import { useRecoilState } from 'recoil';
+import { monthAtom, yearAtom } from '../atom';
+import { useEffect, useState } from 'react';
 
 const CalendarMonth = () => {
   const [year, setYear] = useRecoilState(yearAtom);
@@ -8,9 +8,11 @@ const CalendarMonth = () => {
 
   return (
     <>
-      <div>{year} {month + 1}</div>
+      <div>
+        {year} {month + 1}
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default CalendarMonth
+export default CalendarMonth;
