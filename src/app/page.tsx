@@ -10,7 +10,7 @@ export default function Home() {
 
   return (
     <main>
-      <button onClick={() => router.push('/join')}>시작하기</button>
+      <button onClick={() => router.push('/login')}>시작하기</button>
     </main>
   );
 }
