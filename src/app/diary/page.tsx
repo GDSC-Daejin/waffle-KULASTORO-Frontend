@@ -1,13 +1,22 @@
 'use client';
 
+import styled from 'styled-components';
 import { RecoilRoot } from 'recoil';
 import Calendar from '../components/main/calendar/Calendar';
+import DiaryForm from '../components/main/diaryForm/DiaryForm';
+
+const Container = styled.div`
+  display: flex;
+`;
 
 const Main = () => {
   return (
     <>
       <RecoilRoot>
-        <Calendar />
+        <Container>
+          <Calendar />
+          <DiaryForm />
+        </Container>
       </RecoilRoot>
     </>
   );
