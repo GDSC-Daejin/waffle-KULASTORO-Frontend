@@ -5,6 +5,7 @@ import CalendarTop from './calendarTop/CalendarTop';
 import { useRecoilState } from 'recoil';
 import { monthAtom, yearAtom } from './atom';
 import { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 
 const Container = styled.div`
   background-color: lightgrey;
@@ -47,6 +48,15 @@ const Calendar = () => {
       setDateArray((dateArray) => [...dateArray, i]);
     }
   }, [month, year]);
+
+  const { data, refetch } = useQuery({
+    queryKey: ['diaryData'],
+    queryFn: async () => {
+      return await (await fetch(`v3/api-docs/diary/list`)).json();
+    },
+  });
+
+  console.log(data);
 
   return (
     <>
