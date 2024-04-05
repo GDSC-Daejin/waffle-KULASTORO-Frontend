@@ -66,14 +66,14 @@ const Calendar = () => {
     setDiaryDay(day);
   };
 
-  // const { data, refetch } = useQuery({
-  //   queryKey: ['diaryData'],
-  //   queryFn: async () => {
-  //     return await (
-  //       await fetch(`http://api.hsmarco.kr/v3/api_docs/diary/list`)
-  //     ).json();
-  //   },
-  // });
+  const { data, refetch } = useQuery({
+    queryKey: ['diaryData'],
+    queryFn: async () => {
+      return await (
+        await fetch(`https://api.hsmarco.kr/v3/api_docs/diary/list`)
+      ).json();
+    },
+  });
 
   console.log(diaryDay ? new Date(year, month, diaryDay) : 0);
 

@@ -19,7 +19,7 @@ const SignUp = () => {
 
   const mutation = useMutation({
     mutationFn: (newData: userData) => {
-      return fetch(`http://api.hsmarco.kr/v3api-docs/auth/join`, {
+      return fetch(`https://api.hsmarco.kr/v3api-docs/auth/join`, {
         method: 'POST',
         body: JSON.stringify(newData),
       });
