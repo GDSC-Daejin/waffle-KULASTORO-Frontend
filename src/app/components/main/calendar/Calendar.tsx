@@ -14,9 +14,25 @@ import { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
 const Container = styled.div`
-  background-color: lightgrey;
-  width: 340px;
+  width: 270px;
   height: 600px;
+`;
+
+const TableContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const Th = styled.th`
+  width: 25px;
+  height: 25px;
+`;
+
+const Td = styled.td`
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  cursor: pointer;
 `;
 
 const Calendar = () => {
@@ -81,63 +97,65 @@ const Calendar = () => {
     <>
       <Container>
         <CalendarTop />
-        <table>
-          <thead>
-            <tr>
-              <th>일</th>
-              <th>월</th>
-              <th>화</th>
-              <th>수</th>
-              <th>목</th>
-              <th>금</th>
-              <th>토</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              {dateArray?.slice(0, 7).map((day, index) => (
-                <td key={index} onClick={() => handleSetDate(day)}>
-                  {day === 0 ? <></> : <>{day}</>}
-                </td>
-              ))}
-            </tr>
-            <tr>
-              {dateArray?.slice(7, 14).map((day, index) => (
-                <td key={index} onClick={() => handleSetDate(day)}>
-                  {day}
-                </td>
-              ))}
-            </tr>
-            <tr>
-              {dateArray?.slice(14, 21).map((day, index) => (
-                <td key={index} onClick={() => handleSetDate(day)}>
-                  {day}
-                </td>
-              ))}
-            </tr>
-            <tr>
-              {dateArray?.slice(21, 28).map((day, index) => (
-                <td key={index} onClick={() => handleSetDate(day)}>
-                  {day}
-                </td>
-              ))}
-            </tr>
-            <tr>
-              {dateArray?.slice(28, 35).map((day, index) => (
-                <td key={index} onClick={() => handleSetDate(day)}>
-                  {day}
-                </td>
-              ))}
-            </tr>
-            <tr>
-              {dateArray?.slice(35, 42).map((day, index) => (
-                <td key={index} onClick={() => handleSetDate(day)}>
-                  {day}
-                </td>
-              ))}
-            </tr>
-          </tbody>
-        </table>
+        <TableContainer>
+          <table>
+            <thead>
+              <tr>
+                <Th>일</Th>
+                <Th>월</Th>
+                <Th>화</Th>
+                <Th>수</Th>
+                <Th>목</Th>
+                <Th>금</Th>
+                <Th>토</Th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                {dateArray?.slice(0, 7).map((day, index) => (
+                  <Td key={index} onClick={() => handleSetDate(day)}>
+                    {day === 0 ? <></> : <>{day}</>}
+                  </Td>
+                ))}
+              </tr>
+              <tr>
+                {dateArray?.slice(7, 14).map((day, index) => (
+                  <Td key={index} onClick={() => handleSetDate(day)}>
+                    {day}
+                  </Td>
+                ))}
+              </tr>
+              <tr>
+                {dateArray?.slice(14, 21).map((day, index) => (
+                  <Td key={index} onClick={() => handleSetDate(day)}>
+                    {day}
+                  </Td>
+                ))}
+              </tr>
+              <tr>
+                {dateArray?.slice(21, 28).map((day, index) => (
+                  <Td key={index} onClick={() => handleSetDate(day)}>
+                    {day}
+                  </Td>
+                ))}
+              </tr>
+              <tr>
+                {dateArray?.slice(28, 35).map((day, index) => (
+                  <Td key={index} onClick={() => handleSetDate(day)}>
+                    {day}
+                  </Td>
+                ))}
+              </tr>
+              <tr>
+                {dateArray?.slice(35, 42).map((day, index) => (
+                  <Td key={index} onClick={() => handleSetDate(day)}>
+                    {day}
+                  </Td>
+                ))}
+              </tr>
+            </tbody>
+          </table>
+        </TableContainer>
       </Container>
     </>
   );

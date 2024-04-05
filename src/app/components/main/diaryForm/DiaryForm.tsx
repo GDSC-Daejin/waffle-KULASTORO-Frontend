@@ -15,9 +15,60 @@ interface diaryData {
 }
 
 const Container = styled.div`
+  margin-top: 20px;
   background-color: white;
   width: 500px;
   height: 600px;
+`;
+
+const DateContainer = styled.div`
+  font-size: 14px;
+  margin-bottom: 15px;
+`;
+
+const InputContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 300px;
+  margin: 15px 0;
+`;
+
+const TextContainer = styled.div`
+  margin-bottom: 10px;
+`;
+
+const ErrorText = styled.div`
+  position: absolute;
+  font-size: 12px;
+  color: red;
+  margin-top: -15px;
+`;
+
+const TextArea = styled.textarea`
+  width: 300px;
+  heigth: 500px;
+`;
+
+const Input = styled.input`
+  width: 250px;
+  height: 35px;
+`;
+
+const Button = styled.button`
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(130, 130, 130);
+  border-radius: 3px;
+  width: 300px;
+  height: 35px;
+  padding: 5px 10px;
+  margin: 5px 0;
+  background-color: white;
+  cursor: pointer;
+  &:hover {
+    background-color: lightgray;
+  }
 `;
 
 const DiaryForm = () => {
@@ -78,31 +129,36 @@ const DiaryForm = () => {
       {diaryDay ? (
         <div>
           <Container>
-            <div>
+            <DateContainer>
               {diaryYear + '년 ' + diaryMonth + '월 ' + diaryDay + '일'}
-            </div>
+            </DateContainer>
             <form onSubmit={handleSubmit(onSubmitForm)}>
-              <div>제목</div>
-              <input
-                {...register('title', {
-                  required: {
-                    message: '제목을 입력해주세요.',
-                    value: true,
-                  },
-                })}
-              />
-              <div>{errors.title?.message}</div>
-              <div>내용</div>
-              <textarea
-                {...register('context', {
-                  required: {
-                    message: '내용을 입력해주세요.',
-                    value: true,
-                  },
-                })}
-              />
-              <div>{errors.context?.message}</div>
-              <button>등록</button>
+              <InputContainer>
+                <div>제목</div>
+                <Input
+                  {...register('title', {
+                    required: {
+                      message: '제목을 입력해주세요.',
+                      value: true,
+                    },
+                  })}
+                />
+              </InputContainer>
+              <ErrorText>{errors.title?.message}</ErrorText>
+              <TextContainer>내용</TextContainer>
+              <InputContainer>
+                <TextArea
+                  rows={10}
+                  {...register('context', {
+                    required: {
+                      message: '내용을 입력해주세요.',
+                      value: true,
+                    },
+                  })}
+                />
+              </InputContainer>
+              <ErrorText>{errors.context?.message}</ErrorText>
+              <Button>등록</Button>
             </form>
           </Container>
         </div>

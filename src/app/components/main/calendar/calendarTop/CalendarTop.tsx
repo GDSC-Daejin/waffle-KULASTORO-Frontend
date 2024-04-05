@@ -6,7 +6,9 @@ import { useRecoilState } from 'recoil';
 import { monthAtom, yearAtom } from '../atom';
 
 const Container = styled.div`
+  margin: 20px 0 15px 0;
   display: flex;
+  justify-content: center;
 `;
 
 const CalendarTop = () => {

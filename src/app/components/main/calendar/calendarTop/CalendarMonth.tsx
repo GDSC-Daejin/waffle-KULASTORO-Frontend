@@ -1,6 +1,12 @@
 import { useRecoilState } from 'recoil';
 import { monthAtom, yearAtom } from '../atom';
 import { useEffect, useState } from 'react';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  margin: 0 20px;
+  font-size: 18px;
+`;
 
 const CalendarMonth = () => {
   const [year, setYear] = useRecoilState(yearAtom);
@@ -8,9 +14,9 @@ const CalendarMonth = () => {
 
   return (
     <>
-      <div>
+      <Container>
         {year} {month + 1}
-      </div>
+      </Container>
     </>
   );
 };
