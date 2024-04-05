@@ -11,6 +11,7 @@ interface diaryData {
   title: string;
   context: string;
   diarydate?: string;
+  emotion?: null;
 }
 
 const Container = styled.div`
