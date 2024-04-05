@@ -9,3 +9,8 @@ export const monthAtom = atom<number>({
   key: 'month',
   default: new Date().getMonth(),
 });
+
+export const dayAtom = atom<number | null>({
+  key: 'day',
+  default: null,
+});

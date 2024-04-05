@@ -3,7 +3,7 @@
 import styled from 'styled-components';
 import CalendarTop from './calendarTop/CalendarTop';
 import { useRecoilState } from 'recoil';
-import { monthAtom, yearAtom } from './atom';
+import { dayAtom, monthAtom, yearAtom } from './atom';
 import { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
@@ -16,6 +16,7 @@ const Container = styled.div`
 const Calendar = () => {
   const [year, setYear] = useRecoilState(yearAtom);
   const [month, setMonth] = useRecoilState(monthAtom);
+  const [dayA, setDay] = useRecoilState(dayAtom);
   const [dateArray, setDateArray] = useState<Array<number>>([]);
 
   useEffect(() => {
@@ -49,14 +50,16 @@ const Calendar = () => {
     }
   }, [month, year]);
 
-  const { data, refetch } = useQuery({
-    queryKey: ['diaryData'],
-    queryFn: async () => {
-      return await (await fetch(`v3/api-docs/diary/list`)).json();
-    },
-  });
+  // const { data, refetch } = useQuery({
+  //   queryKey: ['diaryData'],
+  //   queryFn: async () => {
+  //     return await (
+  //       await fetch(`http://api.hsmarco.kr/v3/api_docs/diary/list`)
+  //     ).json();
+  //   },
+  // });
 
-  console.log(data);
+  console.log(dayA ? new Date(year, month, dayA) : 0);
 
   return (
     <>
@@ -77,44 +80,44 @@ const Calendar = () => {
           <tbody>
             <tr>
               {dateArray?.slice(0, 7).map((day, index) => (
-                <>
-                  <td key={index}>{day === 0 ? <></> : <>{day}</>}</td>
-                </>
+                <td key={index} onClick={() => setDay(day)}>
+                  {day === 0 ? <></> : <>{day}</>}
+                </td>
               ))}
             </tr>
             <tr>
               {dateArray?.slice(7, 14).map((day, index) => (
-                <>
-                  <td key={index}>{day}</td>
-                </>
+                <td key={index} onClick={() => setDay(day)}>
+                  {day}
+                </td>
               ))}
             </tr>
             <tr>
               {dateArray?.slice(14, 21).map((day, index) => (
-                <>
-                  <td key={index}>{day}</td>
-                </>
+                <td key={index} onClick={() => setDay(day)}>
+                  {day}
+                </td>
               ))}
             </tr>
             <tr>
               {dateArray?.slice(21, 28).map((day, index) => (
-                <>
-                  <td key={index}>{day}</td>
-                </>
+                <td key={index} onClick={() => setDay(day)}>
+                  {day}
+                </td>
               ))}
             </tr>
             <tr>
               {dateArray?.slice(28, 35).map((day, index) => (
-                <>
-                  <td key={index}>{day}</td>
-                </>
+                <td key={index} onClick={() => setDay(day)}>
+                  {day}
+                </td>
               ))}
             </tr>
             <tr>
               {dateArray?.slice(35, 42).map((day, index) => (
-                <>
-                  <td key={index}>{day}</td>
-                </>
+                <td key={index} onClick={() => setDay(day)}>
+                  {day}
+                </td>
               ))}
             </tr>
           </tbody>
