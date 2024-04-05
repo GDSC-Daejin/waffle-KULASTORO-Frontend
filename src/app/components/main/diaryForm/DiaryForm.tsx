@@ -33,7 +33,7 @@ const DiaryForm = () => {
 
   const mutation = useMutation({
     mutationFn: (newData: diaryData) => {
-      return fetch(`https://api.hsmarco.kr/v3/api-docs/diary/create`, {
+      return fetch(`http://api.hsmarco.kr/v3/api-docs/diary/create`, {
         method: 'POST',
         body: JSON.stringify(newData),
       });

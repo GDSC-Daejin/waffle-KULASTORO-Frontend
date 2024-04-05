@@ -70,7 +70,7 @@ const Calendar = () => {
     queryKey: ['diaryData'],
     queryFn: async () => {
       return await (
-        await fetch(`https://api.hsmarco.kr/v3/api_docs/diary/list`)
+        await fetch(`http://api.hsmarco.kr/v3/api_docs/diary/list`)
       ).json();
     },
   });
