@@ -72,19 +72,6 @@ const DiaryForm = () => {
           : '1900-01-01T00:00:00Z',
     });
   };
-  // ? diaryYear+"-"+diaryMonth:"1900-01-01T00:00:00Z"
-  useEffect(() => {
-    console.log(
-      diaryYear && diaryMonth && diaryDay
-        ? diaryYear +
-            '-' +
-            (String(diaryMonth).length == 1 ? '0' + diaryMonth : diaryMonth) +
-            '-' +
-            diaryDay +
-            'T00:00:00Z'
-        : 0,
-    );
-  }, [diaryDay]);
 
   return (
     <>
