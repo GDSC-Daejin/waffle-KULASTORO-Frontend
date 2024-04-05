@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 interface diaryData {
   title: string;
   context: string;
-  diarydate?: Date;
+  diarydate?: string;
 }
 
 const Container = styled.div`
@@ -44,12 +44,46 @@ const DiaryForm = () => {
     mutation.mutate({
       title: getValues('title'),
       context: getValues('context'),
+      emotion: null,
       diarydate:
         diaryYear && diaryMonth && diaryDay
-          ? new Date(diaryYear, diaryMonth, diaryDay)
-          : new Date(),
+          ? diaryYear +
+            '-' +
+            (String(diaryMonth).length == 1 ? '0' + diaryMonth : diaryMonth) +
+            '-' +
+            diaryDay +
+            'T00:00:00Z'
+          : '1900-01-01T00:00:00Z',
+    });
+
+    console.log({
+      title: getValues('title'),
+      context: getValues('context'),
+      emotion: null,
+      diarydate:
+        diaryYear && diaryMonth && diaryDay
+          ? diaryYear +
+            '-' +
+            (String(diaryMonth).length == 1 ? '0' + diaryMonth : diaryMonth) +
+            '-' +
+            diaryDay +
+            'T00:00:00Z'
+          : '1900-01-01T00:00:00Z',
     });
   };
+  // ? diaryYear+"-"+diaryMonth:"1900-01-01T00:00:00Z"
+  useEffect(() => {
+    console.log(
+      diaryYear && diaryMonth && diaryDay
+        ? diaryYear +
+            '-' +
+            (String(diaryMonth).length == 1 ? '0' + diaryMonth : diaryMonth) +
+            '-' +
+            diaryDay +
+            'T00:00:00Z'
+        : 0,
+    );
+  }, [diaryDay]);
 
   return (
     <>
