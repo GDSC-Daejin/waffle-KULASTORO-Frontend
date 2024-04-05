@@ -4,7 +4,8 @@ import { useMutation } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import { dayAtom, monthAtom, yearAtom } from '../calendar/atom';
+import { diaryDayAtom, diaryMonthAtom, diaryYearAtom } from '../calendar/atom';
+import { useEffect, useState } from 'react';
 
 interface diaryData {
   title: string;
@@ -19,13 +20,9 @@ const Container = styled.div`
 `;
 
 const DiaryForm = () => {
-  const yearA = useRecoilValue(yearAtom);
-  const monthA = useRecoilValue(monthAtom);
-  const dayA = useRecoilValue(dayAtom);
-
-  const year = yearA;
-  const month = monthA + 1;
-  const day = dayA;
+  const diaryYear = useRecoilValue(diaryYearAtom);
+  const diaryMonth = useRecoilValue(diaryMonthAtom);
+  const diaryDay = useRecoilValue(diaryDayAtom);
 
   const {
     handleSubmit,
@@ -47,16 +44,21 @@ const DiaryForm = () => {
     mutation.mutate({
       title: getValues('title'),
       context: getValues('context'),
-      diarydate: day ? new Date(year, month, day) : new Date(),
+      diarydate:
+        diaryYear && diaryMonth && diaryDay
+          ? new Date(diaryYear, diaryMonth, diaryDay)
+          : new Date(),
     });
   };
 
   return (
     <>
-      {day ? (
+      {diaryDay ? (
         <div>
           <Container>
-            <div>{year + '년 ' + month + '월 ' + day + '일'}</div>
+            <div>
+              {diaryYear + '년 ' + diaryMonth + '월 ' + diaryDay + '일'}
+            </div>
             <form onSubmit={handleSubmit(onSubmitForm)}>
               <div>제목</div>
               <input

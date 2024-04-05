@@ -10,7 +10,17 @@ export const monthAtom = atom<number>({
   default: new Date().getMonth(),
 });
 
-export const dayAtom = atom<number | null>({
-  key: 'day',
+export const diaryYearAtom = atom<number | null>({
+  key: 'diaryYear',
+  default: null,
+});
+
+export const diaryMonthAtom = atom<number | null>({
+  key: 'diaryMonth',
+  default: null,
+});
+
+export const diaryDayAtom = atom<number | null>({
+  key: 'diaryDay',
   default: null,
 });
