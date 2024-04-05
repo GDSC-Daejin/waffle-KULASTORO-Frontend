@@ -48,6 +48,7 @@ const ErrorText = styled.div`
 const TextArea = styled.textarea`
   width: 300px;
   heigth: 500px;
+  resize: none;
 `;
 
 const Input = styled.input`
